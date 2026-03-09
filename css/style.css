@@ -1,0 +1,133 @@
+body{
+
+  font-family: Georgia, serif;
+  margin:0;
+  background:#f6f6f6;
+  
+  }
+  
+  .title{
+  
+  text-align:center;
+  margin:40px;
+  
+  }
+  
+  /* 首页日记本 */
+  
+  .book-grid{
+  
+  display:grid;
+  grid-template-columns:repeat(auto-fit,200px);
+  justify-content:center;
+  gap:40px;
+  
+  }
+  .book{
+  
+  text-decoration:none;
+  color:black;
+  text-align:center;
+  
+  }
+  
+  .book-icon{
+  
+  font-size:80px;
+  
+  }
+  .book-cover{
+  
+  width:180px;
+  height:220px;
+  
+  background:#c97c5d;
+  
+  color:white;
+  
+  padding:20px;
+  
+  border-radius:6px;
+  
+  box-shadow:
+  -8px 0px 0px #8d5a43,
+  0 10px 20px rgba(0,0,0,0.2);
+  
+  transition:transform 0.2s;
+  
+  }
+  
+  .book-cover:hover{
+  
+  transform:translateY(-5px);
+  
+  }
+  
+  .book-cover h2{
+  
+  margin-top:60px;
+  
+  }
+  
+  
+  /* 博客页面 */
+  
+  .magazine{
+  
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:40px;
+  padding:40px;
+  max-width:1000px;
+  margin:auto;
+  
+  }
+  
+  .page{
+  
+  background:white;
+  padding:20px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.1);
+  
+  }
+  
+  .page img{
+  
+  width:100%;
+  margin-bottom:10px;
+  transition: transform 0.3s ease;
+  
+  }
+    
+  .page img:hover{
+  
+  transform:scale(1.05);
+  
+  }
+
+  .photo-layout{
+
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-bottom:10px;
+    
+    }
+    
+  .photo-layout:has(img:nth-child(2)){
+  
+  grid-template-columns:1fr 1fr;
+  
+  }
+  
+  /* 手机适配 */
+  
+  @media (max-width:800px){
+  
+  .magazine{
+  
+  grid-template-columns:1fr;
+  
+  }
+  
+  }
