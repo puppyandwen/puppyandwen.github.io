@@ -3,7 +3,6 @@ body{
   font-family: Georgia, serif;
   margin:0;
   background:#f6f6f6;
-  /* background: linear-gradient(90deg,#8b5a2b,#7a4f24,#8b5a2b); */
   
   }
   
@@ -11,8 +10,6 @@ body{
   
   text-align:center;
   margin:40px;
-
-  font-family:"Patrick Hand",cursive;
   
   }
   
@@ -91,12 +88,9 @@ body{
   
   /* background:white; */
   padding:20px 20px 35px 20px;
-  box-shadow:0 15px 30px rgba(0,0,0,0.35), 0 3px 8px rgba(0,0,0,0.25);
+  box-shadow:0 5px 10px rgba(0,0,0,0.15);
   border-radius: 3px;
-  transition:transform 0.25s ease;
-  position: relative;
-  --rotate:0deg;
-  transform:rotate(var(--rotate));
+  
   }
 
   /* 不同颜色 */
@@ -133,19 +127,19 @@ body{
 
   .page:nth-child(3n){
 
-  --rotate:-1deg;
+  transform:rotate(-1deg);
   
   }
   
   .page:nth-child(3n+1){
   
-  --rotate:2deg;
+  transform:rotate(2deg);
   
   }
   
   .page:nth-child(3n+2){
   
-  --rotate:-2deg;
+  transform:rotate(-2deg);
   
   }
   
@@ -180,81 +174,15 @@ body{
   
   }
 
-    
-  .page:hover{
-  
-  transform:scale(1.2) rotate(0deg);
-  z-index:10;
-  
-  }
+  .page{
 
-  .page::before{
-
-    content:"";
-    
-    position:absolute;
-    
-    top:-10px;
-    left:35%;
-    
-    width:80px;
-    height:30px;
-    
-    background:repeating-linear-gradient(
-      45deg,
-      rgba(255,255,230,0.7),
-      rgba(255,255,230,0.7) 4px,
-      rgba(255,255,200,0.7) 4px,
-      rgba(255,255,200,0.7) 8px
-      );
-    
-    transform:rotate(-3deg);
-    
-    box-shadow:0 2px 3px rgba(0,0,0,0.2);
-
-    z-index:10;
-    
-    }
-
-  .page:nth-child(4n)::before{
-
-    left:20%;
-    transform:rotate(-6deg);
+    transition:transform 0.25s ease;
     
     }
     
-  .page:nth-child(4n+1)::before{
+    .page:hover{
     
-    left:60%;
-    transform:rotate(5deg);
-    
-    }
-    
-  .page:nth-child(4n+2)::before{
-    
-    left:40%;
-    transform:rotate(2deg);
-    
-    }
-
-  .page:nth-child(5n)::after{
-
-    content:"";
-    
-    position:absolute;
-    
-    top:-10px;
-    right:60%;
-    
-    width:80px;
-    height:30px;
-    
-    background:rgba(255,255,220,0.7);
-    
-    transform:rotate(4deg);
-    
-    box-shadow:0 2px 3px rgba(0,0,0,0.2);
-    
+    transform:scale(1.2) rotate(0deg);
     z-index:10;
     
     }
