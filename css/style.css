@@ -11,8 +11,6 @@ body{
   
   text-align:center;
   margin:40px;
-
-  font-family:"Patrick Hand",cursive;
   
   }
   
@@ -93,10 +91,20 @@ body{
   padding:20px 20px 35px 20px;
   box-shadow:0 15px 30px rgba(0,0,0,0.35), 0 3px 8px rgba(0,0,0,0.25);
   border-radius: 3px;
-  transition:transform 0.25s ease;
   position: relative;
+
   --rotate:0deg;
-  transform:rotate(var(--rotate));
+  --floatY:0px;
+
+  transform:
+      rotate(var(--rotate))
+      translateY(var(--floatY));
+
+  transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+
+
   }
 
   /* 不同颜色 */
@@ -153,14 +161,14 @@ body{
   .page:nth-child(3n){
 
   position:relative;
-  top:10px;
+  top:2px;
   
   }
   
   .page:nth-child(4n){
   
   position:relative;
-  left:8px;
+  left:3px;
   
   }
 
@@ -183,9 +191,16 @@ body{
     
   .page:hover{
   
-  transform:scale(1.2) rotate(0deg);
-  z-index:10;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
   
+  transform:
+    rotate(0deg)
+    translateY(var(--floatY))
+    scale(1.2);
+
+  z-index:10;
+
+
   }
 
   .page::before{

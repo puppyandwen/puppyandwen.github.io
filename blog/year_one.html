@@ -134,29 +134,27 @@
 </div>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script> -->
 
-
 <script>
+const pages = document.querySelectorAll(".page");
 
-    const pages = document.querySelectorAll(".page");
-    
-    window.addEventListener("scroll", () => {
-    
-        const scrollY = window.scrollY;
-    
-        pages.forEach((page, index) => {
-    
-            const speed = 0.05 + (index % 5) * 0.02;
-    
-            const y = scrollY * speed;
-    
-            page.style.transform = `rotate(${getComputedStyle(page).getPropertyValue('--rotate')})
- translateY(${y}px)`
-    
-        });
-    
+window.addEventListener("scroll", () => {
+
+    const scrollY = window.scrollY;
+
+    pages.forEach((page, index) => {
+
+        const speed = 0.05 + (index % 5) * 0.02;
+
+        const offset = scrollY * speed;
+
+        page.style.setProperty("--floatY", offset + "px");
+
     });
-    
-    </script>
+
+});
+</script>
+
+
 </body>
 
 </html>
