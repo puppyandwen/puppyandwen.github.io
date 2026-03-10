@@ -75,7 +75,8 @@ body{
   .magazine{
   
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  /* grid-template-columns:repeat(2,1fr); */
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   gap:40px;
   padding:40px;
   max-width:1000px;
@@ -85,16 +86,84 @@ body{
   
   .page{
   
-  background:white;
-  padding:20px;
-  box-shadow:0 5px 10px rgba(0,0,0,0.1);
+  /* background:white; */
+  padding:20px 20px 35px 20px;
+  box-shadow:0 5px 10px rgba(0,0,0,0.15);
+  border-radius: 3px;
   
   }
+
+  /* 不同颜色 */
+
+  .page:nth-child(5n){
+
+  background:#ffffff;
+  
+  }
+  
+  .page:nth-child(5n+1){
+  
+  background:#f8f8ff; /* 淡紫 */
+  
+  }
+  
+  .page:nth-child(5n+2){
+  
+  background:#f0f8ff; /* 淡蓝 */
+  
+  }
+  
+  .page:nth-child(5n+3){
+  
+  background:#f5fff5; /* 淡绿 */
+  
+  }
+  
+  .page:nth-child(5n+4){
+  
+  background:#fffaf0; /* 淡黄 */
+  
+  }
+
+  .page:nth-child(3n){
+
+  transform:rotate(-1deg);
+  
+  }
+  
+  .page:nth-child(3n+1){
+  
+  transform:rotate(2deg);
+  
+  }
+  
+  .page:nth-child(3n+2){
+  
+  transform:rotate(-2deg);
+  
+  }
+  
+
+  .page:nth-child(3n){
+
+  position:relative;
+  top:10px;
+  
+  }
+  
+  .page:nth-child(4n){
+  
+  position:relative;
+  left:8px;
+  
+  }
+
+
   
   .page img{
   
   width:100%;
-  margin-bottom:10px;
+  margin-bottom:15px;
   transition: transform 0.3s ease;
   
   }
