@@ -96,7 +96,7 @@
             2023年5月7日
         </p>
         <p>
-            在颛桥万达的鳞片绘画墙留下了交大的印记。那一天在电影院看了银河护卫队3，姜在电影院看哭了，小哭包初见端倪。
+            在颛桥万达的鳞片绘画墙留下了交大的印记。那一天在电影院看了银河护卫队3，姜在电影院看哭了。
         </p>
         
         </div>
@@ -118,7 +118,7 @@
 
     <div class="page">
         <div class="photo-layout">
-            <img src="../images/year1/photo10.jpg">
+            <img src="../images/year1/photo14.jpg">
         </div>
         
         
@@ -161,21 +161,6 @@
         
         </div>
 
-
-    <div class="page">
-        <div class="photo-layout">
-            <img src="../images/year1/photo10.jpg">
-        </div>
-        
-        
-        <p>
-            2023年6月18日
-        </p>
-        <p>
-            慢慢习惯住在一起啦
-        </p>
-        
-    </div>
 
     <div class="page">
         <div class="photo-layout">
@@ -402,6 +387,66 @@
         
     </div>
 
+    <div class="page">
+        <div class="photo-layout">
+            <img src="../images/year1/photo30.jpg">
+        </div>
+        
+        
+        <p>
+            2024年1月12日
+        </p>
+        <p>
+            沪西老弄堂，从惊艳吃到平淡
+        </p>
+        
+    </div>
+
+    <div class="page">
+        <div class="photo-layout">
+            <img src="../images/year1/photo31.jpg">
+        </div>
+        
+        
+        <p>
+            2024年1月22日
+        </p>
+        <p>
+            去到雯雯小时候长大的地方
+        </p>
+        
+    </div>
+
+    <div class="page">
+        <div class="photo-layout">
+            <img src="../images/year1/photo32.jpg">
+        </div>
+        
+        
+        <p>
+            2024年3月2日
+        </p>
+        <p>
+            在苏州买了APM的对戒
+        </p>
+        
+    </div>
+
+    <div class="page">
+        <div class="photo-layout">
+            <img src="../images/year1/photo33.jpg">
+        </div>
+        
+        
+        <p>
+            2024年3月30日
+        </p>
+        <p>
+            小美女毕业啦
+        </p>
+        
+    </div>
+
     
 
 </div>
@@ -410,24 +455,32 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script> -->
 
 <script>
-const pages = document.querySelectorAll(".page");
 
-window.addEventListener("scroll", () => {
-
-    const scrollY = window.scrollY;
-
-    pages.forEach((page, index) => {
-
-        const speed = 0.05 + (index % 5) * 0.02;
-
-        const offset = scrollY * speed;
-
-        page.style.setProperty("--floatY", offset + "px");
-
+    const pages = document.querySelectorAll(".page");
+    
+    window.addEventListener("scroll", () => {
+    
+        pages.forEach((page, index) => {
+    
+            const rect = page.getBoundingClientRect();
+    
+            const center = rect.top + rect.height / 2;
+    
+            const screenCenter = window.innerHeight / 2;
+    
+            const distance = center - screenCenter;
+    
+            const speed = 0.05 + (index % 5) * 0.02;
+    
+            const offset = distance * speed;
+    
+            page.style.setProperty("--floatY", offset + "px");
+    
+        });
+    
     });
-
-});
-</script>
+    
+    </script>
 
 
 </body>

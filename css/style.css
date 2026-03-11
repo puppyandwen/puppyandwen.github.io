@@ -97,8 +97,10 @@ body{
   --floatY:0px;
 
   transform:
-      rotate(var(--rotate))
-      translateY(var(--floatY));
+      /* translateX(var(--offsetX)) */
+      /* translateY(calc(var(--floatY)+var(--offsetY))) */
+      translateY(var(--floatY))
+      rotate(var(--rotate));
 
   transition:
       transform 0.25s ease,
@@ -158,19 +160,6 @@ body{
   }
   
 
-  .page:nth-child(3n){
-
-  position:relative;
-  top:2px;
-  
-  }
-  
-  .page:nth-child(4n){
-  
-  position:relative;
-  left:3px;
-  
-  }
 
 
   
