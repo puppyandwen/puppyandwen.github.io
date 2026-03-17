@@ -1,0 +1,104 @@
+body{
+    margin:0;
+    background:#fafafa;
+    font-family: sans-serif;
+}
+
+/* 整体区域 */
+
+.timeline-wrapper{
+    position:relative;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* 横向滚动轨道 */
+
+.timeline-track{
+    display:flex;
+    align-items:flex-end;
+    height:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:0 200px;
+    gap:120px;
+}
+
+/* 每个时间节点 */
+
+.entry{
+    position:relative;
+    min-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    transition:transform 0.35s cubic-bezier(.22,.61,.36,1),
+                box-shadow 0.35s;;
+}
+
+/* 卡片外框 */
+
+.card{
+    background:white;
+    padding:14px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* 图片容器 */
+
+.image-box{
+    width:360px;
+    height:240px;
+    overflow:hidden;
+    border-radius:6px;
+}
+
+/* 图片 */
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.image-box.vertical{
+    width:300px;
+    height:450px;
+}
+
+/* 文字 */
+
+.caption{
+    margin-top:8px;
+    font-size:14px;
+    text-align:center;
+}
+/* 图片 */
+
+/* 垂线 */
+
+.connector{
+    width:2px;
+    height:80px;
+    background:#555;
+    margin-top:10px;
+}
+
+/* 时间文字 */
+
+.time{
+    margin-top:6px;
+    font-size:12px;
+}
+
+/* 时间轴 */
+
+.timeline-axis{
+    position:absolute;
+    bottom:80px;
+    left:0;
+    width:100%;
+    height:2px;
+    background:#333;
+}
