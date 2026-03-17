@@ -49,7 +49,7 @@ body{
 /* 卡片 */
 
 .card{
-    width:min(420px, 70vw);;
+    width: 30vw;;
     background:white;
     border-radius:10px;
     padding:10px;
@@ -168,4 +168,11 @@ body{
 
     background:black;
 
+}
+
+
+@media (max-width: 800px){
+    .card{
+        width:65vw;
+    }
 }
