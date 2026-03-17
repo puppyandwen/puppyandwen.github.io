@@ -69,6 +69,7 @@ window.addEventListener("wheel", (e)=>{
         currentIndex = Math.max(0, Math.min(entries.length-1,currentIndex));
 
         updateCarousel();
+        updateTimeline();
 
         scrollAccumulator = 0;
     }
@@ -105,8 +106,118 @@ window.addEventListener("touchend",()=>{
         currentIndex = Math.max(0, Math.min(entries.length-1,currentIndex));
 
         updateCarousel();
+        updateTimeline();
     }
 
     touchDelta = 0;
+
+});
+
+//entry点击居中
+entries.forEach((entry, i)=>{
+
+    entry.addEventListener("click", ()=>{
+
+        currentIndex = i;
+
+        updateCarousel();
+        updateTimeline();
+
+    });
+
+});
+
+// timeline刻度
+const timeline = document.querySelector(".timeline-ticks");
+
+entries.forEach((entry,i)=>{
+
+    const tick = document.createElement("div");
+
+    tick.className = "tick";
+
+    tick.addEventListener("click", ()=>{
+
+        currentIndex = i;
+
+        updateCarousel();
+        updateTimeline();
+
+    });
+
+    timeline.appendChild(tick);
+
+});
+
+
+//动态刻度非均匀分布
+function updateTimeline(){
+
+    const ticks = document.querySelectorAll(".tick");
+
+    const total = entries.length;
+
+    
+
+    ticks.forEach((tick,i)=>{
+
+        let pos;
+
+        if(i <= currentIndex){
+
+            const ratio = i / currentIndex;
+
+            pos = ratio * 50;
+
+        }else{
+
+            const ratio = (i-currentIndex)/(total-currentIndex-1);
+
+            pos = 50 + ratio * 50;
+
+        }
+
+        tick.style.left = pos + "%";
+        tick.classList.toggle("active", i===currentIndex);
+
+    });
+
+}
+
+updateTimeline();
+
+
+// timeline拖动支持
+
+let dragging = false;
+
+timeline.addEventListener("mousedown", ()=>{
+
+    dragging = true;
+
+});
+
+window.addEventListener("mouseup", ()=>{
+
+    dragging = false;
+
+});
+
+window.addEventListener("mousemove",(e)=>{
+
+    if(!dragging) return;
+
+    const rect = timeline.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+
+    const ratio = x / rect.width;
+
+    const index = Math.round(ratio*(entries.length-1));
+
+    currentIndex = index;
+
+    updateCarousel();
+    updateTimeline();
 
 });
