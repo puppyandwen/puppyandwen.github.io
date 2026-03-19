@@ -1,4 +1,7 @@
 const entries = document.querySelectorAll(".entry");
+console.log(entries[0].offsetWidth);
+
+
 
 let currentIndex = 0;
 
@@ -12,9 +15,11 @@ function updateCarousel(){
 
         /* 横向间距 */
 
-        const spacing = 420 * Math.exp(-abs*0.15);
+        const cardWidth = entry.offsetWidth;
 
+        const spacing = cardWidth * 1.1 * Math.exp(-abs*0.15);
         const x = offset * spacing;
+        // const x = offset * spacing;
 
         /* scale */
 
