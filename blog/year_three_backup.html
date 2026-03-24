@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="timeline.css">
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+
+/* 地图 */
+#map{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+
+/* batch气泡 */
+.batch{
+  width:140px;
+}
+
+.batch-bubble{
+  background:white;
+  border-radius:16px;
+  padding:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.thumb-strip{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+}
+
+.thumb-strip img{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:4px;
+}
+
+.batch-time{
+  text-align:center;
+  font-size:12px;
+  margin-top:6px;
+  opacity:0.7;
+}
+
+/* 小尖角 */
+.batch::after{
+  content:"";
+  display:block;
+  margin:auto;
+  width:0;
+  height:0;
+  border:8px solid transparent;
+  border-top-color:white;
+}
+
+/* hover */
+.batch:hover{
+  transform:scale(1.2);
+  z-index:999;
+}
+
+/* gallery */
+#gallery{
+  position:fixed;
+  inset:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#gallery.hidden{
+  display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<!-- gallery -->
+<div id="gallery" class="hidden">
+  <div class="timeline-wrapper">
+    <div class="timeline-track" id="track"></div>
+  </div>
+</div>
+
+<script>
+
+// ================= 地图 =================
+const map = L.map('map', { zoomControl:false })
+.setView([34.69,135.50], 5);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap'
+}).addTo(map);
+
+// ================= batch数据 =================
+const batch = {
+  lat:34.6937,
+  lng:135.5023,
+  time:"2024.04.20 - 05.07",
+  images:[
+    "../images/year1/photo11.jpg",
+    "../images/year1/photo12.jpg",
+    "../images/year1/photo13.jpg",
+    "../images/year1/photo14.jpg",
+    "../images/year1/photo15.jpg"
+  ]
+};
+
+// ================= 创建气泡 =================
+const html = `
+<div class="batch">
+  <div class="batch-bubble">
+    <div class="thumb-strip">
+      ${batch.images.map(src=>`<img src="${src}">`).join("")}
+    </div>
+    <div class="batch-time">${batch.time}</div>
+  </div>
+</div>
+`;
+
+const icon = L.divIcon({
+  html: html,
+  className: "",
+  iconSize: [140, 80],
+  iconAnchor: [70, 80]
+});
+
+const marker = L.marker([batch.lat, batch.lng], {icon}).addTo(map);
+
+// ================= 打开gallery =================
+marker.on("click", ()=>{
+
+  const gallery = document.getElementById("gallery");
+  const track = document.getElementById("track");
+
+  track.innerHTML = batch.images.map((src,i)=>`
+    <div class="entry">
+      <div class="card">
+        <img src="${src}">
+        <div class="time">${batch.time}</div>
+      </div>
+    </div>
+  `).join("");
+
+  gallery.classList.remove("hidden");
+
+  // ⚠️ 重新初始化 timeline（关键）
+  setTimeout(()=>{
+    initTimeline();
+  },50);
+});
+
+// ================= 关闭 =================
+document.getElementById("gallery").onclick = (e)=>{
+  if(e.target.id === "gallery"){
+    e.currentTarget.classList.add("hidden");
+  }
+};
+
+// ================= timeline复用封装 =================
+function initTimeline(){
+
+  const script = document.createElement("script");
+  script.src = "timeline.js";
+
+  document.body.appendChild(script);
+}
+
+</script>
+
+</body>
+</html>

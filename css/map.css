@@ -1,0 +1,239 @@
+html, body {
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* 整体容器 */
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#map-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000; /* 防止白边 */
+}
+
+/* 地图本体 */
+#map {
+  position: absolute;
+  height: 100vh;
+  width: auto;
+
+  top: 0;
+  left: 0;
+
+  will-change: transform;
+  z-index: 0;
+}
+
+/* 地图 */
+/* #map {
+  position: absolute;
+  width: 2000px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* 晨昏线 */
+#terminator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* batch容器 */
+#batches {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  inset: 0;
+  z-index: 2;
+}
+
+
+/* 单个batch */
+.batch {
+  position: absolute;
+  pointer-events: auto;
+}
+
+.pin {
+  width: 6px;
+  height: 6px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100px; /* 初始，后面优化 */
+  background: rgba(0,0,0,0.4);
+  transform-origin: top;
+  z-index: 2;
+}
+
+/* 气泡 */
+.bubble-wrap {
+  position: absolute;
+  transform: translate(var(--x), var(--y)) scale(1.4);
+  user-select: none;
+  z-index: 4;
+}
+
+.bubble {
+  background: white;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  cursor: grab;
+  touch-action: none;
+}
+
+.bubble:active {
+  cursor: grabbing;
+}
+
+.batch:hover .bubble {
+  transform: scale(1.2);
+}
+
+/* .bubble {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  z-index: 4;
+} */
+
+/* 尖角 */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: white;
+}
+
+/* 缩略图 */
+.thumb-row {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  max-width: 150px;
+}
+
+.thumb-row img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* 时间 */
+.time-label {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* viewer */
+#viewer {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 6;
+}
+
+.hidden {
+  display: none;
+}
+
+.viewer-content {
+  position: absolute;
+
+  width: 90%;        /* ✅ 更宽 */
+  height: 90%;
+
+  max-width: 1200px; /* ✅ 防止超大屏过宽 */
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  background: white;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.viewer-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.viewer-item {
+  min-width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* ✅ 垂直居中 */
+  align-items: center;       /* ✅ 水平居中 */
+}
+
+.viewer-item img {
+  max-width: 100%;
+  max-height: calc(100% - 50px); /* ✅ 给caption留空间 */
+  object-fit: contain;
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: rgb(116, 116, 116);
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+}
+
+.left { left: 20px; }
+.right { right: 20px; }
+
+svg{
+  background:#cfe8ff; /* 海洋 */
+}
+
+svg path{
+  fill:white;
+  stroke:rgb(228, 228, 228);
+}
