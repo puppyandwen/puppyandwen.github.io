@@ -1,0 +1,125 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+    color: white;
+    font-family: Georgia, serif;
+  }
+  
+  /* 外层窗口 */
+  .credits-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  
+  /* 滚动内容 */
+  .credits {
+    position: absolute;
+    width: 100%;
+    top:70%;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  
+    animation: scrollUp 350s linear infinite;
+  }
+
+  .credits-container::before,
+.credits-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.credits-container::before {
+  top: 0;
+  background: linear-gradient(to bottom, black, transparent);
+}
+
+.credits-container::after {
+  bottom: 0;
+  background: linear-gradient(to top, black, transparent);
+}
+  
+  /* 滚动动画 */
+  @keyframes scrollUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-200%);
+    }
+  }
+  
+  /* 每一段 */
+  .block {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.4s ease;
+  }
+
+  /* 中心 block */
+  .block.active {
+    transform: scale(1.08);
+    z-index: 5;
+  }
+  
+  /* 发光（推荐 subtle 一点） */
+  .block.active img{
+    box-shadow:
+      0 0 20px rgba(255,255,255,0.25),
+      0 0 40px rgba(255,255,255,0.15);
+  }
+  
+  /* 图片 */
+  .block img {
+    width: 20%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .block img:hover .credits {
+    animation-play-state: paused;
+  }
+  
+  /* 文字 */
+  .block p {
+    width: 80%;
+    line-height: 1.6;
+    font-size: 18px;
+  }
+  
+  /* 左右交替 */
+  .block.left {
+    flex-direction: row;
+  }
+  
+  .block.right {
+    flex-direction: row-reverse;
+  }
+  
+  /* 手机适配 */
+  @media (max-width: 768px) {
+  
+    .block {
+      flex-direction: column !important;
+      width: 80%;
+    }
+  
+    .block img, .block p {
+      width: 100%;
+    }
+  
+  }
