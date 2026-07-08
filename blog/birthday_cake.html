@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>生日快乐</title>
+  <link rel="stylesheet" href="../css/birthday_cake.css">
+</head>
+<body>
+
+  <a class="back-link" href="../index.html">← 返回</a>
+
+  <div class="scene">
+    <div class="stars" aria-hidden="true"></div>
+
+    <header class="title-bar">
+      <h1>Happy Birthday</h1>
+      <p class="hint" id="hint">双击蜡烛点火</p>
+    </header>
+
+    <div class="cake-stand">
+      <div class="cake">
+        <div class="cake-stack">
+          <div class="candle-base">
+            <div class="candle" id="candle"></div>
+          </div>
+
+          <div class="fruit-layer" aria-hidden="true">
+            <div class="fruit-plane fruit-back">
+              <span class="fruit grape" style="--x:8%;--y:8px"></span>
+              <span class="fruit strawberry" style="--x:18%;--y:0"></span>
+              <span class="fruit grape cluster" style="--x:28%;--y:10px"></span>
+              <span class="fruit strawberry small" style="--x:38%;--y:0"></span>
+              <span class="fruit grape" style="--x:48%;--y:12px"></span>
+              <span class="fruit strawberry" style="--x:58%;--y:2px"></span>
+              <span class="fruit grape cluster" style="--x:68%;--y:10px"></span>
+              <span class="fruit strawberry small" style="--x:78%;--y:0"></span>
+              <span class="fruit grape" style="--x:88%;--y:8px"></span>
+              <span class="fruit strawberry" style="--x:94%;--y:5px"></span>
+            </div>
+            <div class="fruit-plane fruit-front">
+              <span class="fruit strawberry" style="--x:6%;--y:14px"></span>
+              <span class="fruit grape" style="--x:16%;--y:20px"></span>
+              <span class="fruit strawberry small" style="--x:26%;--y:16px"></span>
+              <span class="fruit grape cluster" style="--x:36%;--y:22px"></span>
+              <span class="fruit strawberry" style="--x:46%;--y:18px"></span>
+              <span class="fruit grape cluster" style="--x:54%;--y:24px"></span>
+              <span class="fruit strawberry small" style="--x:62%;--y:16px"></span>
+              <span class="fruit grape cluster" style="--x:72%;--y:22px"></span>
+              <span class="fruit strawberry" style="--x:82%;--y:18px"></span>
+              <span class="fruit grape" style="--x:90%;--y:20px"></span>
+              <span class="fruit strawberry small" style="--x:96%;--y:14px"></span>
+            </div>
+          </div>
+
+          <div class="cake-body">
+            <div class="piped-edge piped-top"></div>
+            <div class="miffy-face">
+              <div class="miffy-eyes">
+                <span class="eye"></span>
+                <span class="eye"></span>
+              </div>
+              <span class="miffy-x" aria-hidden="true">
+                <svg viewBox="0 0 32 14" width="32" height="14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="2" y1="12" x2="30" y2="2" stroke="#141414" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="2" y1="2" x2="30" y2="12" stroke="#141414" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </div>
+            <div class="piped-edge piped-bottom"></div>
+          </div>
+
+          <div class="candle-upper" id="candleZone" aria-label="电子蜡烛，双击点火或吹灭">
+            <div class="flame-wrap" id="flameWrap">
+              <div class="flame-glow"></div>
+              <div class="flame"></div>
+              <div class="flame-inner"></div>
+            </div>
+            <div class="wick" id="wick"></div>
+            <div class="smoke" id="smoke"></div>
+          </div>
+        </div>
+
+        <div class="cake-board"></div>
+      </div>
+
+      <div class="table" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="blessing-stage" id="blessingStage" aria-live="polite"></div>
+
+  <script src="../js/birthday_cake.js"></script>
+</body>
+</html>
